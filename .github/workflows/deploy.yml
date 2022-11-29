@@ -19,6 +19,7 @@ jobs:
       - run: echo 'approval'
 
   deploy:
+    environment: Production
     needs: approval
     runs-on: ubuntu-latest
     steps:
