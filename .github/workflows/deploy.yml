@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3.0.0
       - run: echo 'first'
-      - run: echo ${{ github.ref_name }}
+      - run: echo ${{ github.head_ref }}
 
   approval:
     environment: Production
