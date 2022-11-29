@@ -1,2 +1,1 @@
 # actions-sample-pub
-test
