@@ -4,16 +4,23 @@ on:
   pull_request:
 
 jobs:
-  approval:
-    environment: Production
+  first:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.0.0
-      - run: pwd
+      - run: echo 'first'
+
+  approval:
+    environment: Production
+    needs: first
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3.0.0
+      - run: echo 'approval'
 
   deploy:
     needs: approval
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.0.0
-      - run: pwd
+      - run: echo 'deploy'
