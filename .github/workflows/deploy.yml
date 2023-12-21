@@ -10,7 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.0.0
-      - run: echo 'Approved'
+      - run: |
+          echo 'Approved'
+          echo github.head_ref: ${{ github.head_ref }}
 
   deploy:
     needs: approval
