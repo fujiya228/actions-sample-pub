@@ -3,13 +3,18 @@ name: 'Deploy'
 on:
   pull_request:
   workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to deploy'
+        required: true
+        default: 'main'
 
 jobs:
   approval:
     environment: Production
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.0.0
+      - uses: actions/checkout@v4
       - run: |
           echo 'Approved'
           echo github.head_ref: ${{ github.head_ref }}
