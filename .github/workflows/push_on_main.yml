@@ -1,0 +1,16 @@
+name: push on main
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  call-workflow:
+    uses: ./.github/workflows/reusable-workflow.yml
+    with:
+      ref: ${{ github.sha }}
