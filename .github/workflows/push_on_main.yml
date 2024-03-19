@@ -21,4 +21,4 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.sha }}
+          ref: '4fcf428391e42e5ea92e128d7844d3f8a358bfc7'
