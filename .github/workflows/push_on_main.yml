@@ -14,3 +14,30 @@ jobs:
     uses: ./.github/workflows/reusable-workflow.yml
     with:
       ref: ${{ github.sha }}
+
+  temp-check-checkout:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        # with:
+        #   ref: '4fcf428391e42e5ea92e128d7844d3f8a358bfc7'
+  
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo
+        run: 
+          echo ${{ github.event }}
+          echo ${{ github.event.head_commit }}
+          echo ${{ github.event.head_commit.modified }}
+
+  check_modified_files:
+    runs-on: ubuntu-latest
+    if: ${{ contains(github.event.head_commit.modified, '.github/workflows/push_on_main.yml') }}
+    steps:
+      - name: Echo
+        run: 
+          echo ${{ github.event }}
+          echo ${{ github.event.head_commit }}
+          echo ${{ github.event.head_commit.modified }}
